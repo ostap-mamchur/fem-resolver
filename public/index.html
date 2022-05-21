@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+  <title>FEM</title>
+
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #cccccc;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 0.5em;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+    }
+
+    .form {
+      padding: 2em;
+      background-color: white;
+    }
+
+    .flex-element {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form>*+* {
+      margin-top: 1em;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #plot {
+      width: 100%;
+      min-height: 350px;
+      background: white;
+    }
+
+    .title {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h3 class="title">
+      Програмний комплекс для розв'язування одновимірної задачі за допомогою методу скінченних елементів
+    </h3>
+    <div class="wrapper">
+      <div class="flex-element">
+
+        <form id="form" class="form">
+          <div class="field">
+            <label for="a">a:</label>
+            <input id="a" type="text" />
+          </div>
+          <div class="field">
+            <label for="leftBoundary">Ліва границя</label>
+            <input type="text" id="leftBoundary">
+          </div>
+          <div class="field">
+            <label for="b">b:</label>
+            <input id="b" type="text" />
+          </div>
+          <div class="field">
+            <label for="rightBoundary">Права границя</label>
+            <input type="text" id="rightBoundary">
+          </div>
+          <div class="field">
+            <label for="n">n:</label>
+            <input id="n" type="text" />
+          </div>
+          <div>
+            <button type="submit">Розв'язати</button>
+          </div>
+        </form>
+      </div>
+      <div class="flex-element">
+        <div id="plot"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="../src/index.js">
+  </script>
+</body>
+
+</html>
