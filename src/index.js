@@ -1,6 +1,8 @@
 import FEMSolver from "./methods/FEMSolver.js";
 import range from "./helpers/range.js";
 import renderPlot from "./views/renderPlot.js";
+import renderTableHtml from "./views/renderTableHtml.js";
+import calculateError from "./helpers/calculateError.js";
 
 // y'' + y = 1; y(0) = 1, y(1) = 0
 
@@ -86,4 +88,14 @@ document.querySelector("#form").addEventListener("submit", (event) => {
       title: "Метод скінченних елементів",
     }
   );
+
+  renderTableHtml(document.querySelector("#solutions"), {
+    x: xx,
+    "точний роз'язок": xx.map((x) => exactFunction(x)),
+    "мке роз'язок": yy,
+    похибка: calculateError(
+      yy,
+      xx.map((x) => exactFunction(x))
+    ),
+  });
 });
